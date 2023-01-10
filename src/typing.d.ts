@@ -1,2 +1,8 @@
+export {}
+
 declare module '*.vue';
-declare let chrome: any
+declare global {
+  interface Window {
+    chrome: any
+  }
+}
