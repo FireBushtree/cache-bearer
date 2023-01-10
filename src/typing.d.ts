@@ -1,2 +1,2 @@
 declare module '*.vue';
-declare var chrome: any;
+declare let chrome: any

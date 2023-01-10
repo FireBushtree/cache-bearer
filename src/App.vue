@@ -1,18 +1,17 @@
 <script lang="ts" setup>
 import CButton from './components/c-button.vue'
-import CCard from './components/c-card.vue'
+// import CCard from './components/c-card.vue'
 
 const getCookie = async () => {
   const queryOptions = { active: true, lastFocusedWindow: true }
-  const [tab] = await chrome.tabs.query(queryOptions)
+  const [tab] = await window.chrome.tabs.query(queryOptions)
   if (!tab) {
     return
   }
-  console.log(chrome.tabs.sendMessage)
-  console.log(tab)
-  const res = await chrome.tabs.sendMessage(tab.id, { type: 'getCookie' })
+  const res = await window.chrome.tabs.sendMessage(tab.id, { type: 'getCookie' })
   console.log(res)
 }
+
 </script>
 
 <template>

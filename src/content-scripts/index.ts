@@ -1,4 +1,4 @@
-export type Message = {
+export interface Message {
   type: 'getCookie'
 }
 
