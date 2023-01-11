@@ -9,14 +9,19 @@ const props = defineProps({
 
 <template>
   <div class="c-card">
-    <div class="c-card-title">{{ props.title }}</div>
+    <div class="c-card-title">
+      {{ props.title }}
+    </div>
     <div class="c-card-body">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.c-card + .c-card {
+  padding-top: 12px;
+}
 .c-card {
   width: 240px;
 

@@ -1,28 +1,33 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { sendMessage } from './utils/chrome'
+import { hanleCacheAction } from './utils/chrome'
 import CButton from './components/c-button.vue'
 import CCard from './components/c-card.vue'
 
 const cacheList = ref([
-  { label: 'Cookie', copy: '', paste: '', clear: '' },
+  { label: 'Cookie', copy: 'copyCookie', paste: '', clear: '' },
   { label: 'Local Storage', copy: '', paste: '', clear: '' },
   { label: 'Session Storage', copy: '', paste: '', clear: '' }
 ])
-
-const hanleCacheAction = async (type: any) => {
-  const message = await sendMessage(type)
-}
-
 </script>
 
 <template>
   <div class="cache-bearer">
-    <c-card v-for="(item, index) in cacheList" :key="index" title="Local Storage">
+    <c-card
+      v-for="(item, index) in cacheList"
+      :key="index"
+      :title="item.label"
+    >
       <div class="cache-bearer-button-wrap">
-        <c-button @click="hanleCacheAction(item.copy)">copy</c-button>
-        <c-button>paste</c-button>
-        <c-button>clear</c-button>
+        <c-button @click="hanleCacheAction(item.copy)">
+          copy
+        </c-button>
+        <c-button @click="hanleCacheAction(item.paste)">
+          paste
+        </c-button>
+        <c-button @click="hanleCacheAction(item.clear)">
+          clear
+        </c-button>
       </div>
     </c-card>
   </div>

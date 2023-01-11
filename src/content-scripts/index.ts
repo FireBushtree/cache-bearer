@@ -1,18 +1,16 @@
-export interface Message {
-  type: 'getCookie'
-}
+import { stra } from './stra'
 
-export function a (a: string): number {
-  console.log(a)
-  return 123
+export interface Message {
+  type: keyof typeof stra
 }
 
 window.chrome.runtime.onMessage.addListener(
   function (message: Message, sender: any, sendResponse: any) {
-    switch (message.type) {
-      case 'getCookie':
-        sendResponse(window.document.cookie)
-        break
+    const messageHandler = stra[message.type]
+    if (!messageHandler) {
+      sendResponse()
     }
+
+    sendResponse(messageHandler())
   }
 )
