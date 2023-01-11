@@ -1,4 +1,3 @@
-import { isString } from '../utils'
 import { cache, CacheKey } from './cache'
 
 export interface Message {
@@ -12,6 +11,7 @@ window.chrome.runtime.onMessage.addListener(
     const messageHandler = cache[message.type]
     const { text } = message
 
+    // @ts-expect-error
     sendResponse(messageHandler(text))
   }
 )

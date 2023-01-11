@@ -7,7 +7,7 @@
     "48": "assets/icons/icon48.png",
     "128": "assets/icons/icon128.png"
   },
-  "permissions": ["tabs", "nativeMessaging"],
+  "permissions": ["tabs", "nativeMessaging", "storage"],
   "action": {
     "default_popup": "../popup.html"
   },
