@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { hanleCacheAction } from './utils/chrome'
+import { copyCookie, pasteCookie } from './utils/chrome'
 import CButton from './components/c-button.vue'
 import CCard from './components/c-card.vue'
 
 const cacheList = ref([
-  { label: 'Cookie', copy: 'copyCookie', paste: '', clear: '' },
+  { label: 'Cookie', copy: copyCookie, paste: pasteCookie, clear: '' },
   { label: 'Local Storage', copy: '', paste: '', clear: '' },
   { label: 'Session Storage', copy: '', paste: '', clear: '' }
 ])
@@ -19,13 +19,13 @@ const cacheList = ref([
       :title="item.label"
     >
       <div class="cache-bearer-button-wrap">
-        <c-button @click="hanleCacheAction(item.copy)">
+        <c-button @click="item.copy">
           copy
         </c-button>
-        <c-button @click="hanleCacheAction(item.paste)">
+        <c-button @click="item.paste">
           paste
         </c-button>
-        <c-button @click="hanleCacheAction(item.clear)">
+        <c-button @click="item.clear">
           clear
         </c-button>
       </div>

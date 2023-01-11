@@ -1,16 +1,17 @@
-import { stra } from './stra'
+import { isString } from '../utils'
+import { cache, CacheKey } from './cache'
 
 export interface Message {
-  type: keyof typeof stra
+  type: CacheKey
+  text?: string | Storage
 }
 
 window.chrome.runtime.onMessage.addListener(
   function (message: Message, sender: any, sendResponse: any) {
-    const messageHandler = stra[message.type]
-    if (!messageHandler) {
-      sendResponse()
-    }
+    console.log(message)
+    const messageHandler = cache[message.type]
+    const { text } = message
 
-    sendResponse(messageHandler())
+    sendResponse(messageHandler(text))
   }
 )
