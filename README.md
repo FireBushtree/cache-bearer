@@ -9,3 +9,11 @@ Sometimes we save information at cache [Local Storage, Session Storage, Cookie],
 * paste Cookie, Local Storage and Session Storage
 
 * clear current website's Cookie, Local Storage and Session Storage
+
+# todos
+
+[ ] add action tip, such as `copy cookie success!`, `paste cookie success` ...
+[ ] update popup UI
+[ ] implement `Cookie` ~~copy~~ & ~~paste~~ & clear
+[ ] implement `Local Storage` copy & paste & clear
+[ ] implement `Session Storage` copy & paste & clear
