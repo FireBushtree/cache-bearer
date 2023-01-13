@@ -71,8 +71,8 @@ defineProps({
       font-size: 14px;
 
       &__icon {
-        width: 22px;
-        height: 22px;
+        width: 16px;
+        height: 16px;
         margin-right: 8px;
 
         &.is-success {
