@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { copyCookie, pasteCookie } from './utils/chrome'
+import { clearCookie, copyCookie, pasteCookie } from './utils/chrome'
 import CButton from './components/c-button.vue'
 import CCard from './components/c-card.vue'
 
 const cacheList = ref([
-  { label: 'Cookie', copy: copyCookie, paste: pasteCookie, clear: '' },
+  { label: 'Cookie', copy: copyCookie, paste: pasteCookie, clear: clearCookie },
   { label: 'Local Storage', copy: '', paste: '', clear: '' },
   { label: 'Session Storage', copy: '', paste: '', clear: '' }
 ])

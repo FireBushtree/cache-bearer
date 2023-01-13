@@ -19,7 +19,7 @@ In this project, **cache** means [Local Storage, Session Storage, Cookie].
 
 - [ ] add action tip, such as `copy cookie success!`, `paste cookie success` ...
 - [ ] update popup UI
-- [ ] implement `Cookie` ~~copy~~ & ~~paste~~ & clear
+- [ ] implement `Cookie` ~~copy~~ & ~~paste~~ & ~~clear~~
 - [ ] implement `Local Storage` copy & paste & clear
 - [ ] implement `Session Storage` copy & paste & clear
 
