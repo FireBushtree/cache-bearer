@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       emptyOutDir: mode == 'production',
+      assetsInlineLimit: 0,
     },
   }
 })
