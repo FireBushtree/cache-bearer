@@ -12,8 +12,8 @@ Sometimes we save information at cache [Local Storage, Session Storage, Cookie],
 
 # todos
 
-[ ] add action tip, such as `copy cookie success!`, `paste cookie success` ...
-[ ] update popup UI
-[ ] implement `Cookie` ~~copy~~ & ~~paste~~ & clear
-[ ] implement `Local Storage` copy & paste & clear
-[ ] implement `Session Storage` copy & paste & clear
+- [ ] add action tip, such as `copy cookie success!`, `paste cookie success` ...
+- [ ] update popup UI
+- [ ] implement `Cookie` ~~copy~~ & ~~paste~~ & clear
+- [ ] implement `Local Storage` copy & paste & clear
+- [ ] implement `Session Storage` copy & paste & clear
