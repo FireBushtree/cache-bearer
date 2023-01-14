@@ -24,6 +24,20 @@ export const cache = {
     }
   },
 
+  copyLocalStorage () {
+    return window.localStorage.valueOf()
+  },
+
+  pasteLoalStorage (storage: Storage) {
+    for (const [key, value] of Object.entries(storage)) {
+      window.localStorage.setItem(key, value)
+    }
+  },
+
+  clearLocalStroage () {
+    window.localStorage.clear()
+  },
+
   callMessage (text: string, type: MessageType = 'success') {
     const container = document.querySelector('body')
     if (container) {

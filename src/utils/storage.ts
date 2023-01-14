@@ -3,6 +3,7 @@ export type StorageKey = keyof typeof storage
 const CACHE_PREFIX = 'cache-bearer'
 const genKey = (key: string): string => `${CACHE_PREFIX}-${key}`
 const COOKIE_KEY = genKey('cookie')
+const LOCAL_STORAGE_KEY = genKey('local-storage')
 
 export const storage = {
   async getter (key: string) {
@@ -10,7 +11,7 @@ export const storage = {
     return obj ? obj[key] : null
   },
 
-  setter (key: string, val: string) {
+  setter (key: string, val: any) {
     window.chrome.storage.local.set({ [key]: val })
   },
 
@@ -20,5 +21,13 @@ export const storage = {
 
   async getCookie () {
     return await storage.getter(COOKIE_KEY)
+  },
+
+  setLocalStorage (val: Object) {
+    return storage.setter(LOCAL_STORAGE_KEY, val)
+  },
+
+  async getLocalStorage () {
+    return await storage.getter(LOCAL_STORAGE_KEY)
   }
 }
