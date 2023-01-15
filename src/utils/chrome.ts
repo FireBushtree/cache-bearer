@@ -1,9 +1,10 @@
+import { CACHE, CacheName } from '../constants'
 import { Message } from '../content-scripts'
 import { CacheKey, MessageType } from '../content-scripts/cache'
 import { storage, StorageKey } from './storage'
 
 export interface CreateHelperOptions {
-  name: string
+  name: CacheName
   type: CacheKey
   copyFunc: typeof storage[StorageKey]
 }
@@ -26,43 +27,80 @@ const createCopy: CreateHelper = (options: CreateHelperOptions) => {
   }
 }
 
+export interface CreatePasterOptions {
+  name: CacheName
+  type: CacheKey
+  pasteFunc: typeof storage[StorageKey]
+}
+
+export type CreatePaster = (
+  options: CreatePasterOptions
+) => () => Promise<void>
+
+const createPaste: CreatePaster = (options: CreatePasterOptions) => {
+  const { name, type, pasteFunc } = options
+  return async function () {
+    // @ts-expect-error
+    const text = await pasteFunc()
+    if (text) {
+      await sendMessage({ type, text })
+      await $message(`paste ${name} success`)
+    }
+  }
+}
+
+export interface CreateClearerOptions {
+  name: CacheName
+  type: CacheKey
+}
+
+export type CreateClearer = (options: CreateClearerOptions) => () => Promise<void>
+
+const createClear: CreateClearer = (options: CreateClearerOptions) => {
+  const { name, type } = options
+  return async function () {
+    await sendMessage({ type })
+    await $message(`clear ${name} success`)
+  }
+}
+
+// cookie
+const COOKIE_NAME = CACHE.COOKIE as CacheName
 export const copyCookie = createCopy({
-  name: 'cookie',
+  name: COOKIE_NAME,
   type: 'copyCookie',
-  copyFunc: storage.getCookie
+  copyFunc: storage.setCookie
 })
 
+export const pasteCookie = createPaste({
+  name: COOKIE_NAME,
+  type: 'pasteCookie',
+  pasteFunc: storage.getCookie
+})
+
+export const clearCookie = createClear({
+  name: COOKIE_NAME,
+  type: 'clearCookie'
+})
+
+// local storage
+const LOCAL_SOTRAGE_NAME = CACHE.LOCAL_STORAGE as CacheName
 export const copyLocalStorage = createCopy({
-  name: 'local storage',
+  name: LOCAL_SOTRAGE_NAME,
   type: 'copyLocalStorage',
-  copyFunc: storage.getLocalStorage
+  copyFunc: storage.setLocalStorage
 })
 
-export const pasteCookie = async (): Promise<void> => {
-  const cookie = await storage.getCookie()
-  if (cookie) {
-    await sendMessage({ type: 'pasteCookie', text: cookie })
-    await $message('paste cookie success')
-  }
-}
+export const pasteLocalStorage = createPaste({
+  name: LOCAL_SOTRAGE_NAME,
+  type: 'pasteLoalStorage',
+  pasteFunc: storage.getLocalStorage
+})
 
-export const clearCookie = async (): Promise<void> => {
-  await sendMessage({ type: 'clearCookie' })
-  await $message('clear cookie success')
-}
-
-export const pasteLocalStorage = async (): Promise<void> => {
-  const lStorage = await storage.getLocalStorage()
-  if (lStorage) {
-    await sendMessage({ type: 'pasteLoalStorage', text: lStorage })
-    await $message('paste local storage success')
-  }
-}
-
-export const clearLocalStorage = async (): Promise<void> => {
-  await sendMessage({ type: 'clearLocalStroage' })
-  await $message('clear local storage success')
-}
+export const clearLocalStorage = createClear({
+  name: LOCAL_SOTRAGE_NAME,
+  type: 'clearLocalStroage'
+})
 
 export async function sendMessage (message: Message): Promise<any> {
   const queryOptions = { active: true, lastFocusedWindow: true }
