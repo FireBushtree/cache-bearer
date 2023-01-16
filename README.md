@@ -18,11 +18,11 @@ In this project, **cache** means [Local Storage, Session Storage, Cookie].
 ## todos
 
 - [x] add action tip, such as `copy cookie success!`, `paste cookie success` ...
-- [ ] update popup UI
+- [x] update popup UI
 - [x] implement `Cookie` ~~copy~~ & ~~paste~~ & ~~clear~~
 - [x] implement `Local Storage` ~~copy~~ & ~~paste~~ & ~~clear~~
-- [ ] implement `Session Storage` copy & paste & clear
-- [ ] refine util/chrome code
+- [x] implement `Session Storage` ~~copy~~ & ~~paste~~ & ~~clear~~
+- [x] refine util/chrome code
 
 ## License
 

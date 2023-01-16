@@ -6,15 +6,33 @@ import {
   clearCookie,
   copyLocalStorage,
   pasteLocalStorage,
-  clearLocalStorage
+  clearLocalStorage,
+  copySessionStorage,
+  pasteSessionStorage,
+  clearSessionStorage
 } from './utils/chrome'
 import CButton from './components/c-button.vue'
 import CCard from './components/c-card.vue'
 
 const cacheList = ref([
-  { label: 'Cookie', copy: copyCookie, paste: pasteCookie, clear: clearCookie },
-  { label: 'Local Storage', copy: copyLocalStorage, paste: pasteLocalStorage, clear: clearLocalStorage },
-  { label: 'Session Storage', copy: '', paste: '', clear: '' }
+  {
+    label: 'Cookie',
+    copy: copyCookie,
+    paste: pasteCookie,
+    clear: clearCookie
+  },
+  {
+    label: 'Local Storage',
+    copy: copyLocalStorage,
+    paste: pasteLocalStorage,
+    clear: clearLocalStorage
+  },
+  {
+    label: 'Session Storage',
+    copy: copySessionStorage,
+    paste: pasteSessionStorage,
+    clear: clearSessionStorage
+  }
 ])
 </script>
 

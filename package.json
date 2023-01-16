@@ -23,5 +23,5 @@
     "vite-plugin-crx-mv3": "workspace:*",
     "vue-tsc": "^0.40.13"
   },
-  "license": "ISC"
+  "license": "MIT"
 }

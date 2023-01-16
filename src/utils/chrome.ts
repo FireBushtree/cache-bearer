@@ -1,4 +1,4 @@
-import { CACHE, CacheName } from '../constants'
+import { CacheName, COOKIE_NAME, LOCAL_STORAGE_NAME, SESSION_STORAGE_NAME } from '../constants'
 import { Message } from '../content-scripts'
 import { CacheKey, MessageType } from '../content-scripts/cache'
 import { storage, StorageKey } from './storage'
@@ -65,7 +65,6 @@ const createClear: CreateClearer = (options: CreateClearerOptions) => {
 }
 
 // cookie
-const COOKIE_NAME = CACHE.COOKIE as CacheName
 export const copyCookie = createCopy({
   name: COOKIE_NAME,
   type: 'copyCookie',
@@ -84,22 +83,39 @@ export const clearCookie = createClear({
 })
 
 // local storage
-const LOCAL_SOTRAGE_NAME = CACHE.LOCAL_STORAGE as CacheName
 export const copyLocalStorage = createCopy({
-  name: LOCAL_SOTRAGE_NAME,
+  name: LOCAL_STORAGE_NAME,
   type: 'copyLocalStorage',
   copyFunc: storage.setLocalStorage
 })
 
 export const pasteLocalStorage = createPaste({
-  name: LOCAL_SOTRAGE_NAME,
+  name: LOCAL_STORAGE_NAME,
   type: 'pasteLoalStorage',
   pasteFunc: storage.getLocalStorage
 })
 
 export const clearLocalStorage = createClear({
-  name: LOCAL_SOTRAGE_NAME,
+  name: LOCAL_STORAGE_NAME,
   type: 'clearLocalStroage'
+})
+
+// session storage
+export const copySessionStorage = createCopy({
+  name: SESSION_STORAGE_NAME,
+  type: 'copySessionStorage',
+  copyFunc: storage.setSessionStorage
+})
+
+export const pasteSessionStorage = createPaste({
+  name: SESSION_STORAGE_NAME,
+  type: 'pasteSessionStorage',
+  pasteFunc: storage.getSessionStorage
+})
+
+export const clearSessionStorage = createClear({
+  name: SESSION_STORAGE_NAME,
+  type: 'clearSessionStorage'
 })
 
 export async function sendMessage (message: Message): Promise<any> {

@@ -1,7 +1,5 @@
-export type CacheName = 'cookie' | 'local storage' | 'session storage'
+export type CacheName = typeof COOKIE_NAME | typeof LOCAL_STORAGE_NAME | typeof SESSION_STORAGE_NAME
 
-export const CACHE = {
-  COOKIE: 'cookie',
-  LOCAL_STORAGE: 'local storage',
-  SESSION_STORAGE: 'session storage'
-}
+export const COOKIE_NAME = 'cookie'
+export const LOCAL_STORAGE_NAME = 'local storage'
+export const SESSION_STORAGE_NAME = 'session storage'

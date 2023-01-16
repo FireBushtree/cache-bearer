@@ -38,6 +38,20 @@ export const cache = {
     window.localStorage.clear()
   },
 
+  copySessionStorage () {
+    return window.sessionStorage.valueOf()
+  },
+
+  pasteSessionStorage (storage: Storage) {
+    for (const [key, value] of Object.entries(storage)) {
+      window.sessionStorage.setItem(key, value)
+    }
+  },
+
+  clearSessionStorage () {
+    window.sessionStorage.clear()
+  },
+
   callMessage (text: string, type: MessageType = 'success') {
     const container = document.querySelector('body')
     if (container) {
