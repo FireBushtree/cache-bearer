@@ -7,7 +7,20 @@ Sometimes we save information at cache [Local Storage, Session Storage, Cookie],
 
 ## definition
 
-In this project, **cache** means [Local Storage, Session Storage, Cookie].
+In this project, **cache** means [Local Storage, Session Storage, Cookie]
+
+## install
+
+1. download [zip file](https://github.com/FireBushtree/cache-bearer/releases/tag/v0.0.1)
+
+2. install by source (follow the next steps)
+* use node version >= 17
+* clone this repo `git clone git@github.com:FireBushtree/cache-bearer.git`
+* install dependence `yarn`
+* use `yarn run build` & get **dist** folder
+
+3. open **Chrome** and type url `chrome://extensions`, click button **Load the unzipped extension**,
+
 
 ## feature
 
