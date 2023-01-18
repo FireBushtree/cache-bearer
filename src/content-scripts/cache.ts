@@ -10,7 +10,18 @@ export const cache = {
   },
 
   pasteCookie (cookie: string) {
-    window.document.cookie = cookie
+    if (!cookie) {
+      return
+    }
+
+    cookie.split(';').forEach(item => {
+      const [key, value] = item.split('=')
+      console.log(key)
+      const date = new Date()
+      date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000))
+      const expires = '; expires=' + date.toUTCString()
+      document.cookie = key + '=' + (value || '') + expires + '; path=/'
+    })
   },
 
   clearCookie () {
