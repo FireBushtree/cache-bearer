@@ -11,7 +11,7 @@ In this project, **cache** means [Local Storage, Session Storage, Cookie]
 
 ## install
 
-1. download [zip file](https://github.com/FireBushtree/cache-bearer/releases/tag/v0.0.1)
+1. download [zip file](https://github.com/FireBushtree/cache-bearer/releases/tag/v0.0.2)
 
 2. install by source (follow the next steps)
 * use node version >= 17
