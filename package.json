@@ -3,7 +3,8 @@
   "version": "0.0.2",
   "scripts": {
     "dev": "vite build --watch --mode development",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -11,16 +12,19 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vitejs/plugin-vue": "^2.3.0",
+    "@vue/test-utils": "^2.2.7",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^26.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.8.0",
+    "happy-dom": "^8.1.5",
     "sass": "^1.57.1",
     "typescript": "*",
     "vite": "^3.0.9",
     "vite-plugin-crx-mv3": "workspace:*",
+    "vitest": "^0.27.2",
     "vue-tsc": "^0.40.13"
   },
   "license": "MIT"
