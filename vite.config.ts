@@ -7,12 +7,12 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       crx({
-        manifest: './src/manifest.json',
+        manifest: './src/manifest.json'
       })
     ],
     build: {
-      emptyOutDir: mode == 'production',
-      assetsInlineLimit: 0,
-    },
+      emptyOutDir: mode === 'production',
+      assetsInlineLimit: 0
+    }
   }
 })
