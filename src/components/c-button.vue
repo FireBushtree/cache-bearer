@@ -1,6 +1,6 @@
 <template>
   <button class="c-button">
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
